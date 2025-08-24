@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jabes Salem Acuña Hernández - Hoja de Vida Gamer Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --gamer-red: #ff0040;
+            --gamer-blue: #0080ff;
+            --gamer-yellow: #ffcc00;
+            --gamer-green: #00ff80;
+            --gamer-purple: #8000ff;
+            --gamer-orange: #ff6600;
+            --dark-bg: #0a0a0f;
+            --card-bg: rgba(20, 20, 30, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo animado con efectos de juego */
+        .game-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 128, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 204, 0, 0.1) 0%, transparent 50%);
+            z-index: -3;
+        }
+
+        .pixel-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(255, 0, 64, 0.03) 25%, rgba(255, 0, 64, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 128, 255, 0.03) 75%, rgba(0, 128, 255, 0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(255, 204, 0, 0.03) 25%, rgba(255, 204, 0, 0.03) 26%, transparent 27%, transparent 74%, rgba(0, 255, 128, 0.03) 75%, rgba(0, 255, 128, 0.03) 76%, transparent 77%, transparent);
+            background-size: 40px 40px;
+            animation: pixel-scroll 20s linear infinite;
+            z-index: -2;
+        }
+
+        @keyframes pixel-scroll {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        /* Foto de perfil con marco gamer */
+        .profile-frame {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 8px solid var(--gamer-blue);
+            border-radius: 0;
+            box-shadow: 
+                0 0 0 4px var(--dark-bg),
+                0 0 0 8px var(--gamer-yellow),
+                0 0 20px rgba(255, 204, 0, 0.5);
+            animation: frame-pulse 2s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        @keyframes frame-pulse {
+            0%, 100% { box-shadow: 0 0 0 4px var(--dark-bg), 0 0 0 8px var(--gamer-yellow), 0 0 20px rgba(255, 204, 0, 0.5); }
+            50% { box-shadow: 0 0 0 4px var(--dark-bg), 0 0 0 8px var(--gamer-blue), 0 0 30px rgba(0, 128, 255, 0.7); }
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-frame:hover .profile-img {
+            transform: scale(1.1);
+        }
+
+        /* Efecto de texto pixelado mejorado */
+        .pixel-text {
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 
+                3px 3px 0px rgba(0,0,0,0.5),
+                6px 6px 0px rgba(255,0,64,0.3),
+                0 0 20px currentColor;
+            letter-spacing: 3px;
+            animation: text-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes text-glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        /* Tarjetas de juego mejoradas */
+        .game-card {
+            background: var(--card-bg);
+            border: 4px solid var(--gamer-blue);
+            border-radius: 0;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 0 4px var(--dark-bg),
+                0 0 0 8px var(--gamer-blue);
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, var(--gamer-red), var(--gamer-blue), var(--gamer-yellow), var(--gamer-green), var(--gamer-purple));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .game-card:hover::before {
+            opacity: 1;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px) rotate(1deg) scale(1.02);
+            box-shadow: 
+                0 0 0 4px var(--dark-bg),
+                0 0 0 8px var(--gamer-yellow),
+                0 12px 24px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Partículas de juego mejoradas */
+        .game-particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 28px;
+            animation: particle-float 3s ease-out forwards;
+            z-index: 1;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-20px) rotate(72deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150px) rotate(360deg) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Personaje animado mejorado */
+        .character-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10;
+        }
+
+        .pixel-character {
+            width: 100px;
+            height: 100px;
+            background: var(--gamer-green);
+            position: relative;
+            animation: character-bounce 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.5);
+        }
+
+        .pixel-character::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .pixel-character::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: 70px;
+            height: 25px;
+            background: var(--gamer-blue);
+            box-shadow: 0 0 10px rgba(0, 128, 255, 0.5);
+        }
+
+        .character-eyes {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 30px;
+            height: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .eye {
+            width: 8px;
+            height: 8px;
+            background: var(--gamer-red);
+            border-radius: 50%;
+            animation: eye-blink 4s infinite;
+        }
+
+        @keyframes eye-blink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+
+        /* Botones arcade mejorados */
+        .arcade-btn {
+            background: linear-gradient(145deg, var(--gamer-red), #cc0033);
+            border: none;
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            padding: 18px 36px;
+            position: relative;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 
+                0 8px 0 #990026,
+                0 10px 20px rgba(0,0,0,0.4);
+            transition: all 0.1s ease;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .arcade-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 10px 0 #990026,
+                0 12px 24px rgba(0,0,0,0.5);
+        }
+
+        .arcade-btn:active {
+            transform: translateY(6px);
+            box-shadow: 
+                0 2px 0 #990026,
+                0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Barra de XP estilo juego */
+        .xp-bar {
+            background: #222;
+            height: 30px;
+            border: 3px solid #444;
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .xp-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gamer-yellow), var(--gamer-orange));
+            position: relative;
+            animation: xp-glow 2s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            color: #000;
+        }
+
+        @keyframes xp-glow {
+            0%, 100% { box-shadow: 0 0 20px var(--gamer-yellow); }
+            50% { box-shadow: 0 0 30px var(--gamer-orange); }
+        }
+
+        /* Contador de logros */
+        .achievement-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 3px solid var(--gamer-yellow);
+            padding: 15px 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+        }
+
+        .achievement-counter::before {
+            content: '🏆';
+            margin-right: 10px;
+        }
+
+        /* Efecto de power-up flotante */
+        .power-up-float {
+            animation: power-up-float 3s ease-in-out infinite;
+        }
+
+        @keyframes power-up-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(5deg); }
+            66% { transform: translateY(5px) rotate(-5deg); }
+        }
+
+        /* Efectos de sonido visual */
+        .sound-wave {
+            position: fixed;
+            border: 2px solid var(--gamer-blue);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sound-wave-expand 1s ease-out;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes sound-wave-expand {
+            0% {
+                width: 20px;
+                height: 20px;
+                opacity: 1;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        /* Cursor personalizado mejorado */
+        .game-cursor {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><rect width="40" height="40" fill="%23ff0040" rx="5"/><polygon points="12,12 28,20 12,28" fill="%23fff"/></svg>') 20 20, auto;
+        }
+
+        /* Scrollbar personalizada mejorada */
+        ::-webkit-scrollbar {
+            width: 25px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border: 3px solid #333;
+            border-radius: 0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gamer-blue), var(--gamer-purple));
+            border: 3px solid #fff;
+            border-radius: 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--gamer-yellow), var(--gamer-orange));
+        }
+
+        /* Efecto de carga */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 24px;
+            color: var(--gamer-yellow);
+            animation: loading-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes loading-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Efecto de coleccionable */
+        .collectible {
+            position: fixed;
+            font-size: 30px;
+            animation: collectible-spin 4s linear infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .collectible:hover {
+            transform: scale(1.5);
+        }
+
+        @keyframes collectible-spin {
+            0% { transform: rotate(0deg) translateY(0); }
+            100% { transform: rotate(360deg) translateY(0); }
+        }
+
+        /* Efecto de nivel completado */
+        .level-complete {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 48px;
+            color: var(--gamer-yellow);
+            text-shadow: 0 0 30px currentColor;
+            z-index: 1001;
+            pointer-events: none;
+        }
+
+        .level-complete.show {
+            animation: level-complete-pop 1s ease-out forwards;
+        }
+
+        @keyframes level-complete-pop {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) scale(1.2) rotate(10deg); }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="game-cursor">
+    <!-- Pantalla de carga -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-text">CARGANDO...</div>
+    </div>
+
+    <!-- Fondo de juego -->
+    <div class="game-bg"></div>
+    <div class="pixel-grid"></div>
+
+    <!-- Contador de logros -->
+    <div class="achievement-counter">
+        <span id="achievementCount">0</span> LOGROS
+    </div>
+
+    <!-- Partículas de juego -->
+    <div id="particles-container"></div>
+
+    <!-- Personaje pixelado -->
+    <div class="character-container">
+        <div class="pixel-character">
+            <div class="character-eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coleccionables -->
+    <div class="collectible" style="top: 10%; left: 5%;" onclick="collectItem(this)">💎</div>
+    <div class="collectible" style="top: 60%; left: 90%;" onclick="collectItem(this)">⭐</div>
+    <div class="collectible" style="top: 30%; left: 80%;" onclick="collectItem(this)">🏆</div>
+
+    <!-- Mensaje de nivel completado -->
+    <div id="levelComplete" class="level-complete">¡NIVEL COMPLETADO!</div>
+
+    <!-- Contenedor principal -->
+    <div class="container mx-auto px-4 py-8 max-w-6xl relative z-10">
+        <!-- Encabezado con foto -->
+        <header class="text-center mb-12">
+            <div class="flex flex-col items-center gap-6">
+                <div class="profile-frame">
+                    <img src="https://imgur.com/zD0BTpK" alt="Jabes Salem Acuña Hernández" class="profile-img">
+                </div>
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-2 pixel-text" style="color: var(--gamer-red);">
+                        JABES SALEM
+                    </h1>
+                    <h2 class="text-2xl md:text-4xl font-bold mb-6 pixel-text" style="color: var(--gamer-blue);">
+                        ACUÑA HERNÁNDEZ
+                    </h2>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-4 text-lg mt-6">
+                <span class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-map-marker-alt text-yellow-400"></i>
+                    <span>Barranquilla, Colombia</span>
+                </span>
+                <span class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-phone text-green-400"></i>
+                    <a href="tel:+573008798749" class="hover:text-green-300 transition-colors">+57 300 879 8749</a>
+                </span>
+                <span class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-envelope text-blue-400"></i>
+                    <a href="mailto:Jabesrko011@gmail.com" class="hover:text-cyan-400 transition-colors">Jabesrko011@gmail.com</a>
+                </span>
+                <span class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-linkedin text-blue-600"></i>
+                    <a href="https://www.linkedin.com/in/jabes-acuña-343671245" target="_blank" class="hover:text-blue-400 transition-colors">LinkedIn</a>
+                </span>
+                <span class="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-github text-purple-400"></i>
+                    <a href="https://github.com/Jabesinhoo" target="_blank" class="hover:text-purple-300 transition-colors">GitHub</a>
+                </span>
+            </div>
+        </header>
+
+        <!-- Barra de XP -->
+        <div class="mb-8">
+            <div class="xp-bar">
+                <div class="xp-progress" style="width: 75%;">
+                    <span>LV.42 DEV WIZARD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perfil Profesional -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-yellow);">
+                <i class="fas fa-trophy mr-3 power-up-float"></i>PERFIL PROFESIONAL
+            </h2>
+            <div class="game-card p-6">
+                <p class="text-lg leading-relaxed">
+                    Técnico en Análisis y Desarrollo de Sistemas de Información con experiencia en programación en Python, desarrollo en WordPress y WooCommerce, y creación de scripts de automatización para optimizar procesos. He trabajado en proyectos de software con enfoque en gestión de alquileres, aplicaciones web y e-commerce. Me caracterizo por ser autodidacta, proactivo y con interés en seguir creciendo en el área de desarrollo full stack y seguridad (Kali Linux).
+                </p>
+            </div>
+        </section>
+
+        <!-- Formación Académica -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-green);">
+                <i class="fas fa-medal mr-3 power-up-float"></i>FORMACIÓN ACADÉMICA
+            </h2>
+            <div class="game-card p-6">
+                <div class="flex items-center gap-4">
+                    <div class="text-5xl power-up-float">
+                        <i class="fas fa-certificate" style="color: var(--gamer-yellow);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Tecnólogo en Análisis y Desarrollo de Sistemas de Información</h3>
+                        <p class="text-gray-400">SENA - 2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyectos Destacados -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-purple);">
+                <i class="fas fa-star mr-3 power-up-float"></i>PROYECTOS DESTACADOS
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Proyecto 1 -->
+                <div class="game-card p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-bold" style="color: var(--gamer-blue);">Software de Gestión de Alquileres</h3>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900 rounded text-sm">Django</span>
+                        <span class="px-3 py-1 bg-purple-900 rounded text-sm">PDF</span>
+                        <span class="px-3 py-1 bg-green-900 rounded text-sm">Celery</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Desarrollo de un sistema integral para gestionar alquileres de equipos con módulos de clientes, contratos, notificaciones y pagos. Incluye generación de contratos PDF y automatización de recordatorios.
+                    </p>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="game-card p-6">
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-bold" style="color: var(--gamer-purple);">Sistema de Inventario</h3>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-2xl"></i>
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-green-900 rounded text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-blue-900 rounded text-sm">Express</span>
+                        <span class="px-3 py-1 bg-purple-900 rounded text-sm">PostgreSQL</span>
+                    </div>
+                    <p class="text-gray-300">
+                        Aplicación para gestión de inventario con autenticación de usuarios y control de roles, implementada con Express y PostgreSQL.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiencia -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-red);">
+                <i class="fas fa-rocket mr-3 power-up-float"></i>EXPERIENCIA
+            </h2>
+            <div class="game-card p-6">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="text-5xl power-up-float">
+                        <i class="fas fa-code" style="color: var(--gamer-purple);"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Mi GitHub es mi experiencia</h3>
+                        <p class="text-gray-400">Desarrollador Freelance</p>
+                    </div>
+                </div>
+                <p class="text-gray-300">
+                    Trabajos freelance en WordPress/WooCommerce, desarrollo de aplicaciones web personalizadas y automatización de procesos. Cada proyecto en mi portafolio representa una experiencia real de desarrollo.
+                </p>
+            </div>
+        </section>
+
+        <!-- Habilidades Técnicas -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-blue);">
+                <i class="fas fa-gamepad mr-3 power-up-float"></i>HABILIDADES TÉCNICAS
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Lenguajes -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-green);">
+                        <i class="fas fa-code mr-2"></i>Lenguajes
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>SQL</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-blue);">
+                        <i class="fas fa-layer-group mr-2"></i>Frameworks
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Django</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Node.js</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CMS/E-commerce -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-purple);">
+                        <i class="fas fa-shopping-cart mr-2"></i>CMS/E-commerce
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>WordPress</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>WooCommerce</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automatización -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-yellow);">
+                        <i class="fas fa-robot mr-2"></i>Automatización
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Scripts Python</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Celery</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bases de datos -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-green);">
+                        <i class="fas fa-database mr-2"></i>Bases de datos
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PostgreSQL</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MySQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Herramientas -->
+                <div class="game-card p-4">
+                    <h3 class="text-lg font-bold mb-3" style="color: var(--gamer-red);">
+                        <i class="fas fa-tools mr-2"></i>Herramientas
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Git/GitHub</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>VS Code</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Idiomas -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 pixel-text" style="color: var(--gamer-yellow);">
+                <i class="fas fa-language mr-3 power-up-float"></i>IDIOMAS
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="game-card p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="life-bar">
+                                <div class="heart"></div>
+                                <div class="heart"></div>
+                                <div class="heart"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Español</h3>
+                                <p class="text-gray-400">Nativo</p>
+                            </div>
+                        </div>
+                        <div class="text-4xl">
+                            <i class="fas fa-flag" style="color: var(--gamer-red);"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="game-card p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="life-bar">
+                                <div class="heart"></div>
+                                <div class="heart"></div>
+                                <div class="heart" style="background: #333;"></div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Inglés</h3>
+                                <p class="text-gray-400">En aprendizaje</p>
+                            </div>
+                        </div>
+                        <div class="text-4xl">
+                            <i class="fas fa-flag" style="color: var(--gamer-blue);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Botón de contacto -->
+        <div class="text-center mb-8">
+            <button class="arcade-btn" onclick="showContactModal()">
+                <i class="fas fa-gamepad mr-2"></i>CONTACTAR
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de contacto -->
+    <div id="contactModal" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+        <div class="game-card p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-bold mb-6 pixel-text text-center" style="color: var(--gamer-yellow);">
+                <i class="fas fa-envelope mr-2"></i>CONTACTO
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 bg-gray-800 p-3 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-phone text-green-400 text-xl"></i>
+                    <a href="tel:+573008798749" class="hover:text-green-300 transition-colors">+57 300 879 8749</a>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 p-3 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                    <a href="mailto:Jabesrko011@gmail.com" class="hover:text-cyan-400 transition-colors">Jabesrko011@gmail.com</a>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 p-3 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-linkedin text-blue-600 text-xl"></i>
+                    <a href="https://www.linkedin.com/in/jabes-acuña-343671245" target="_blank" class="hover:text-blue-400 transition-colors">LinkedIn</a>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-800 p-3 rounded hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-github text-purple-400 text-xl"></i>
+                    <a href="https://github.com/Jabesinhoo" target="_blank" class="hover:text-purple-300 transition-colors">GitHub</a>
+                </div>
+            </div>
+            <button onclick="hideContactModal()" class="arcade-btn mt-6 w-full">
+                <i class="fas fa-times mr-2"></i>CERRAR
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let achievementCount = 0;
+        let collectedItems = 0;
+
+        // Pantalla de carga
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loadingScreen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Partículas de juego mejoradas
+        const gameParticles = ['🎮', '🕹️', '💰', '⭐', '🏆', '💎', '🎯', '🚀', '⚡', '🔥', '💻', '🌟', '🎪', '🎨', '🎭'];
+        
+        function createGameParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'game-particle';
+            particle.textContent = gameParticles[Math.floor(Math.random() * gameParticles.length)];
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.bottom = '-50px';
+            particle.style.color = ['#ff0040', '#0080ff', '#ffcc00', '#00ff80', '#8000ff', '#ff6600'][Math.floor(Math.random() * 6)];
+            
+            document.getElementById('particles-container').appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 3000);
+        }
+
+        // Generar partículas más frecuentemente
+        setInterval(createGameParticle, 1000);
+
+        // Sistema de logros
+        function updateAchievementCount() {
+            achievementCount++;
+            document.getElementById('achievementCount').textContent = achievementCount;
+            createSoundWave(window.innerWidth / 2, window.innerHeight / 2);
+            
+            if (achievementCount === 5) {
+                showLevelComplete();
+            }
+        }
+
+        // Efecto de onda de sonido
+        function createSoundWave(x, y) {
+            const wave = document.createElement('div');
+            wave.className = 'sound-wave';
+            wave.style.left = (x - 10) + 'px';
+            wave.style.top = (y - 10) + 'px';
+            document.body.appendChild(wave);
+            
+            setTimeout(() => wave.remove(), 1000);
+        }
+
+        // Mostrar nivel completado
+        function showLevelComplete() {
+            const levelComplete = document.getElementById('levelComplete');
+            levelComplete.classList.add('show');
+            createSoundWave(window.innerWidth / 2, window.innerHeight / 2);
+            
+            setTimeout(() => {
+                levelComplete.classList.remove('show');
+            }, 3000);
+        }
+
+        // Recolectar items
+        function collectItem(element) {
+            collectedItems++;
+            element.style.transform = 'scale(2) rotate(720deg)';
+            element.style.opacity = '0';
+            
+            setTimeout(() => {
+                element.remove();
+                updateAchievementCount();
+            }, 500);
+            
+            createSoundWave(
+                element.offsetLeft + element.offsetWidth / 2,
+                element.offsetTop + element.offsetHeight / 2
+            );
+        }
+
+        // Modal de contacto
+        function showContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            createSoundWave(window.innerWidth / 2, window.innerHeight / 2);
+            updateAchievementCount();
+        }
+
+        function hideContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('contactModal').addEventListener('click', (e) => {
+            if (e.target.id === 'contactModal') {
+                hideContactModal();
+            }
+        });
+
+        // Animación de entrada para las tarjetas
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px) rotate(-2deg)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'all 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0) rotate(0deg)';
+                        updateAchievementCount();
+                    }, 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observar todas las tarjetas
+        document.querySelectorAll('.game-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Efectos de sonido visual en clicks
+        document.querySelectorAll('button, a').forEach(element => {
+            element.addEventListener('click', (e) => {
+                createSoundWave(e.clientX, e.clientY);
+                // Aquí podrías agregar un sonido real: new Audio('click-sound.mp3').play();
+            });
+        });
+
+        // Movimiento del personaje con el mouse
+        const character = document.querySelector('.character-container');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 30;
+            const y = (e.clientY / window.innerHeight - 0.5) * 30;
+            character.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // Efecto de parallax en el fondo
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const pixelGrid = document.querySelector('.pixel-grid');
+            pixelGrid.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Actualizar contador de logros al cargar secciones
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    if (!section.dataset.visited) {
+                        section.dataset.visited = 'true';
+                        updateAchievementCount();
+                    }
+                }
+            });
+        });
+
+        // Efecto de hover en la foto de perfil
+        const profileFrame = document.querySelector('.profile-frame');
+        profileFrame.addEventListener('mouseenter', () => {
+            createSoundWave(
+                profileFrame.offsetLeft + profileFrame.offsetWidth / 2,
+                profileFrame.offsetTop + profileFrame.offsetHeight / 2
+            );
+        });
+
+        // Crear partículas adicionales al hacer scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            if (scrollTop > lastScrollTop) {
+                // Scroll hacia abajo
+                if (Math.random() > 0.7) {
+                    createGameParticle();
+                }
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
