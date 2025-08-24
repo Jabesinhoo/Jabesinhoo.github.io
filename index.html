@@ -262,13 +262,13 @@
             );
             z-index: -1;
         }
-        .profile-mosaic-grid {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            grid-template-rows: repeat(10, 1fr);
-            width: 100%;
-            height: 100%;
-        }
+
+        .profile-image {
+    width: 200px;  /* ajusta el tamaño */
+    height: auto;
+    border-radius: 10px; /* opcional, redondea esquinas */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* opcional */
+}
         .profile-pixel {
             width: 100%;
             height: 100%;
@@ -637,11 +637,12 @@
         <!-- Encabezado con foto -->
         <header class="text-center mb-12">
             <!-- Foto de perfil construida con bloques -->
-            <div class="profile-mosaic mb-6">
-                <div class="profile-mosaic-grid" id="profileMosaic">
-                    <!-- Los píxeles se generarán con JavaScript -->
-                </div>
-            </div>
+  <div class="profile-mosaic mb-6">
+    <div class="profile-mosaic-grid" id="profileMosaic">
+        <img src="https://i.imgur.com/zD0BTpK.jpeg" alt="Foto de perfil" class="profile-image">
+    </div>
+</div>
+
             <div>
                 <h1 class="text-4xl md:text-6xl font-bold mb-2 minecraft-text" style="color: var(--minecraft-green);">
                     JABES SALEM
@@ -1055,50 +1056,10 @@
             }, 1500);
             
             // Generar mosaico de perfil
-            generateProfileMosaic();
         });
         
         // Generar mosaico de perfil con bloques de Minecraft
-        function generateProfileMosaic() {
-            const mosaic = document.getElementById('profileMosaic');
-            const blockSize = 20; // 20x20 píxeles para el mosaico
-            
-            // Crear 100 píxeles (10x10 grid)
-            for (let i = 0; i < 100; i++) {
-                const pixel = document.createElement('div');
-                pixel.className = 'profile-pixel';
-                
-                // Asignar colores basados en la imagen (simulación)
-                const row = Math.floor(i / 10);
-                const col = i % 10;
-                
-                // Patrón de colores para simular una foto
-                if ((row >= 2 && row <= 7) && (col >= 3 && col <= 6)) {
-                    // Cara
-                    if ((row >= 3 && row <= 4) && (col >= 4 && col <= 5)) {
-                        // Ojos
-                        pixel.style.background = '#000000';
-                    } else if (row === 5 && col >= 4 && col <= 5) {
-                        // Boca
-                        pixel.style.background = '#8B4513';
-                    } else {
-                        // Piel
-                        pixel.style.background = '#F0D0A0';
-                    }
-                } else if ((row >= 0 && row <= 1) || (row >= 8 && row <= 9)) {
-                    // Cabello
-                    pixel.style.background = '#654321';
-                } else {
-                    // Fondo
-                    const blocks = ['grass-block', 'stone-block', 'dirt-block', 'wood-block'];
-                    const randomBlock = blocks[Math.floor(Math.random() * blocks.length)];
-                    pixel.style.background = getComputedStyle(document.createElement('div')).getPropertyValue(`--${randomBlock.split('-')[1]}`);
-                }
-                
-                mosaic.appendChild(pixel);
-            }
-        }
-        
+
         // Sistema de día/noche
         function toggleDayNight() {
             isNight = !isNight;
