@@ -1,0 +1,659 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+
+:root {
+    --minecraft-green: #7ED321;
+    --minecraft-brown: #8B6914;
+    --minecraft-gray: #C0C0C0;
+    --minecraft-dark-gray: #555555;
+    --minecraft-blue: #3F81E1;
+    --minecraft-red: #B02E26;
+    --minecraft-yellow: #F0E130;
+    --minecraft-black: #2D2D2D;
+    --minecraft-grass: #8EB971;
+    --minecraft-dirt: #8B6F47;
+    --minecraft-stone: #A8A8A8;
+    --minecraft-wood: #966F33;
+    --minecraft-cobblestone: #7A7A7A;
+    --minecraft-diamond: #5DECF5;
+    --minecraft-gold: #FCEE4B;
+    --minecraft-redstone: #FF0B0B;
+    --minecraft-lapis: #2966CC;
+    --minecraft-emerald: #50C878;
+    --minecraft-obsidian: #3B3B5C;
+    --dark-bg: #1a1a1a;
+    --card-bg: rgba(45, 45, 45, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rajdhani', sans-serif;
+    background: var(--dark-bg);
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fondo estilo Minecraft */
+.minecraft-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(180deg, #87CEEB 0%, #87CEEB 30%, #98D98E 30%, #98D98E 100%);
+    z-index: -3;
+    transition: all 1s ease;
+}
+
+.minecraft-bg.night {
+    background:
+        linear-gradient(180deg, #000428 0%, #004e92 50%, #000000 100%);
+}
+
+/* Patrón de bloques */
+.block-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(0, 0, 0, 0.05) 32px, rgba(0, 0, 0, 0.05) 33px),
+        repeating-linear-gradient(90deg, transparent, transparent 32px, rgba(0, 0, 0, 0.05) 32px, rgba(0, 0, 0, 0.05) 33px);
+    z-index: -2;
+}
+
+/* Terreno simple */
+.terrain {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(180deg, #98D98E 0%, #98D98E 50%, #8B6F47 50%, #8B6F47 100%);
+    z-index: -1;
+}
+
+/* Bloques de Minecraft */
+.minecraft-block {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.minecraft-block:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Bloque de tierra */
+.dirt-block {
+    background: linear-gradient(180deg, var(--minecraft-dirt) 0%, #654321 100%);
+}
+
+/* Bloque de hierba */
+.grass-block {
+    background:
+        linear-gradient(180deg,
+            var(--minecraft-grass) 0%,
+            var(--minecraft-grass) 20%,
+            var(--minecraft-dirt) 20%,
+            var(--minecraft-dirt) 100%);
+}
+
+/* Bloque de piedra */
+.stone-block {
+    background:
+        radial-gradient(circle at 30% 30%, #BBBBBB 0%, var(--minecraft-stone) 50%, #999999 100%);
+}
+
+/* Bloque de madera */
+.wood-block {
+    background:
+        repeating-linear-gradient(0deg,
+            var(--minecraft-wood),
+            var(--minecraft-wood) 6px,
+            var(--minecraft-brown) 6px,
+            var(--minecraft-brown) 8px);
+}
+
+/* Bloque de diamante */
+.diamond-block {
+    background:
+        radial-gradient(circle,
+            var(--minecraft-diamond) 0%,
+            #4FC3F7 50%,
+            #29B6F6 100%);
+    animation: diamond-sparkle 2s ease-in-out infinite;
+}
+
+@keyframes diamond-sparkle {
+
+    0%,
+    100% {
+        filter: brightness(1) drop-shadow(0 0 5px rgba(95, 236, 245, 0.5));
+    }
+
+    50% {
+        filter: brightness(1.5) drop-shadow(0 0 15px rgba(95, 236, 245, 0.8));
+    }
+}
+
+/* Bloque de redstone */
+.redstone-block {
+    background:
+        radial-gradient(circle,
+            var(--minecraft-redstone) 0%,
+            #CC0000 50%,
+            #990000 100%);
+    animation: redstone-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes redstone-glow {
+
+    0%,
+    100% {
+        filter: brightness(1) drop-shadow(0 0 5px rgba(255, 11, 11, 0.5));
+    }
+
+    50% {
+        filter: brightness(1.5) drop-shadow(0 0 15px rgba(255, 11, 11, 0.8));
+    }
+}
+
+/* Bloque de lapislázuli */
+.lapis-block {
+    background:
+        radial-gradient(circle,
+            var(--minecraft-lapis) 0%,
+            #1E4B8C 50%,
+            #153A63 100%);
+}
+
+/* Bloque de esmeralda */
+.emerald-block {
+    background:
+        radial-gradient(circle,
+            var(--minecraft-emerald) 0%,
+            #3FA65F 50%,
+            #2E7D4A 100%);
+    animation: emerald-sparkle 2s ease-in-out infinite;
+}
+
+@keyframes emerald-sparkle {
+
+    0%,
+    100% {
+        filter: brightness(1) drop-shadow(0 0 5px rgba(80, 200, 120, 0.5));
+    }
+
+    50% {
+        filter: brightness(1.5) drop-shadow(0 0 15px rgba(80, 200, 120, 0.8));
+    }
+}
+
+/* Bloque de obsidiana */
+.obsidian-block {
+    background:
+        radial-gradient(circle,
+            var(--minecraft-obsidian) 0%,
+            #2A2A3E 50%,
+            #1F1F2E 100%);
+}
+
+/* Pico de diamante */
+.diamond-pickaxe {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.diamond-pickaxe:hover {
+    transform: scale(1.2) rotate(15deg);
+    filter: drop-shadow(0 0 10px rgba(95, 236, 245, 0.8));
+}
+
+/* Espada de diamante */
+.diamond-sword {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    z-index: 5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.diamond-sword:hover {
+    transform: scale(1.2) rotate(15deg);
+    filter: drop-shadow(0 0 10px rgba(95, 236, 245, 0.8));
+}
+
+/* Foto de perfil construida con bloques */
+.profile-mosaic {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 8px solid var(--minecraft-wood);
+    box-shadow:
+        0 0 0 4px var(--minecraft-black),
+        0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    background: var(--minecraft-wood);
+    transition: transform 0.3s ease;
+}
+
+.profile-mosaic:hover {
+    transform: scale(1.05);
+}
+
+.profile-mosaic::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: repeating-linear-gradient(45deg,
+            var(--minecraft-wood),
+            var(--minecraft-wood) 10px,
+            var(--minecraft-black) 10px,
+            var(--minecraft-black) 20px);
+    z-index: -1;
+}
+
+.profile-image {
+    width: 200px;
+    /* ajusta el tamaño */
+    height: auto;
+    border-radius: 10px;
+    /* opcional, redondea esquinas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* opcional */
+}
+
+.profile-pixel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.profile-pixel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Texto estilo Minecraft */
+.minecraft-text {
+    font-family: 'Press Start 2P', cursive;
+    text-shadow:
+        2px 2px 0px rgba(0, 0, 0, 0.8),
+        4px 4px 0px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+/* Tarjetas estilo bloque */
+.minecraft-card {
+    background: var(--card-bg);
+    border: 4px solid var(--minecraft-gray);
+    border-radius: 0;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 0 4px var(--minecraft-black),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.minecraft-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(0deg,
+            transparent,
+            transparent 16px,
+            rgba(255, 255, 255, 0.03) 16px,
+            rgba(255, 255, 255, 0.03) 17px),
+        repeating-linear-gradient(90deg,
+            transparent,
+            transparent 16px,
+            rgba(255, 255, 255, 0.03) 16px,
+            rgba(255, 255, 255, 0.03) 17px);
+    pointer-events: none;
+}
+
+.minecraft-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 0 0 4px var(--minecraft-black),
+        0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Botones estilo Minecraft */
+.minecraft-btn {
+    background: var(--minecraft-green);
+    border: 3px solid var(--minecraft-black);
+    color: var(--minecraft-black);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    padding: 15px 30px;
+    position: relative;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow:
+        0 4px 0 var(--minecraft-black),
+        0 6px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+}
+
+.minecraft-btn:hover {
+    background: #8FE432;
+    transform: translateY(-2px);
+}
+
+.minecraft-btn:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 2px 0 var(--minecraft-black),
+        0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Barra de experiencia */
+.xp-bar {
+    background: var(--minecraft-black);
+    height: 24px;
+    border: 3px solid var(--minecraft-gray);
+    position: relative;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.xp-progress {
+    height: 100%;
+    background: var(--minecraft-green);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: var(--minecraft-black);
+}
+
+/* Skill bar */
+.skill-bar {
+    background: var(--minecraft-black);
+    height: 20px;
+    border: 2px solid var(--minecraft-gray);
+    position: relative;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.skill-progress {
+    height: 100%;
+    background: var(--minecraft-green);
+    transition: width 1s ease;
+}
+
+/* Corazones de vida */
+.heart {
+    width: 20px;
+    height: 18px;
+    background: var(--minecraft-red);
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 0 2px;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 20px;
+    height: 18px;
+    position: absolute;
+    background: var(--minecraft-red);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -9px;
+    left: 0;
+}
+
+.heart::after {
+    left: 9px;
+    top: 0;
+}
+
+.heart.empty {
+    background: var(--minecraft-dark-gray);
+}
+
+.heart.empty::before,
+.heart.empty::after {
+    background: var(--minecraft-dark-gray);
+}
+
+/* Partículas */
+.minecraft-particle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    animation: particle-float 2s ease-out forwards;
+    z-index: 1;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Cursor personalizado */
+.minecraft-cursor {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect width="32" height="32" fill="%237ED321"/><rect x="8" y="8" width="16" height="16" fill="%23000"/></svg>') 16 16, auto;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--minecraft-black);
+    border: 3px solid var(--minecraft-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--minecraft-wood);
+    border: 2px solid var(--minecraft-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--minecraft-brown);
+}
+
+/* Efecto de carga */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--minecraft-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: var(--minecraft-green);
+    animation: loading-pulse 1s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Control de día/noche */
+.day-night-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--minecraft-yellow);
+    border: 3px solid var(--minecraft-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--minecraft-black);
+    transition: all 0.3s ease;
+}
+
+.day-night-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--minecraft-black);
+}
+
+.day-night-toggle:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--minecraft-black);
+}
+
+.day-night-toggle i {
+    font-size: 20px;
+    color: var(--minecraft-black);
+}
+
+/* Inventario */
+.inventory {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 20;
+    background: var(--minecraft-black);
+    border: 4px solid var(--minecraft-gray);
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+    box-shadow: 0 0 0 3px var(--minecraft-black), 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.inventory-slot {
+    width: 50px;
+    height: 50px;
+    background: var(--minecraft-dark-gray);
+    border: 2px solid var(--minecraft-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+/* Efecto de enlace */
+.link-hover {
+    position: relative;
+    display: inline-block;
+}
+
+.link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--minecraft-green);
+    transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .minecraft-text {
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
+
+    .minecraft-btn {
+        font-size: 12px;
+        padding: 12px 24px;
+    }
+
+    .inventory {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .inventory-slot {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .minecraft-block {
+        width: 30px;
+        height: 30px;
+    }
+
+    .diamond-pickaxe,
+    .diamond-sword {
+        width: 30px;
+        height: 30px;
+    }
+
+    .profile-mosaic {
+        width: 150px;
+        height: 150px;
+    }
+}
